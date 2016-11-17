@@ -11,7 +11,7 @@ class getsaleSettingsPage {
     }
 
     public function add_plugin_page() {
-        add_options_page('Settings Admin', 'getsale', 'manage_options', $this->settings_page_name, array($this, 'create_admin_page'));
+        add_options_page('Settings Admin', 'GetSale', 'manage_options', $this->settings_page_name, array($this, 'create_admin_page'));
     }
 
     public function create_admin_page() {
@@ -22,21 +22,18 @@ class getsaleSettingsPage {
         } else $email = get_option('admin_email');
 
         ?>
-        <script type="text/javascript">
-            <?php include('main.js'); ?>
-        </script>
-        <div id="getsale_site_url" style="display: none"><?php echo get_site_url(); ?></div>
-        <div class="wrap">
-            <div id="wrapper">
-                <form id="settings_form" method="post"
-                      action="<?php echo $_SERVER['REQUEST_URI'] ?>">
-                    <h1>Плагин GetSale</h1>
+        <div id='getsale_site_url' style='display: none'><?php echo get_site_url(); ?></div>
+        <div class='wrap'>
+            <div id='wrapper'>
+                <form id='settings_form' method='post'
+                      action='<?php echo $_SERVER['REQUEST_URI'] ?>'>
+                    <h1><?php _e('GetSale Popup Tool');?></h1>
                     <?php
                     getsale_echo_before_text();
                     settings_fields('getsale_option_group');
                     do_settings_sections('getsale_settings');
                     ?>
-                    <input type="submit" name="submit_btn" value="Cохранить изменения">
+                    <input type='submit' name='submit_btn' value='<?php __('Save Settings'); ?>'>
                 </form>
             </div>
         </div>
@@ -49,9 +46,9 @@ class getsaleSettingsPage {
         add_settings_section('setting_section_id', '', // Title
             array($this, 'print_section_info'), $this->settings_page_name);
 
-        add_settings_field('email', 'Email', array($this, 'getsale_email_callback'), $this->settings_page_name, 'setting_section_id');
+        add_settings_field('email', __('Email', 'getsale-popup-tool'), array($this, 'getsale_email_callback'), $this->settings_page_name, 'setting_section_id');
 
-        add_settings_field('getsale_api_key', 'Ключ API', array($this, 'getsale_api_key_callback'), $this->settings_page_name, 'setting_section_id');
+        add_settings_field('getsale_api_key', __('API Key', 'getsale-popup-tool'), array($this, 'getsale_api_key_callback'), $this->settings_page_name, 'setting_section_id');
 
         add_settings_field('getsale_reg_error', 'getsale_reg_error', array($this, 'getsale_reg_error_callback'), $this->settings_page_name, 'setting_section_id');
 
@@ -76,11 +73,11 @@ class getsaleSettingsPage {
     }
 
     public function getsale_email_callback() {
-        printf('<input type="text" id="getsale_email" name="getsale_option_name[getsale_email]" value="%s" title="Введите в данном поле Email, указанный при регистрации на сайте https://getsale.io"/>', isset($this->options['getsale_email']) ? esc_attr($this->options['getsale_email']) : '');
+        printf('<input type="text" id="getsale_email" name="getsale_option_name[getsale_email]" value="%s" title="%s"/>', isset($this->options['getsale_email']) ? esc_attr($this->options['getsale_email']) : '', __('Enter Email', 'getsale-popup-tool'));
     }
 
     public function getsale_api_key_callback() {
-        printf('<input type="text" id="getsale_api_key" name="getsale_option_name[getsale_api_key]" value="%s" title="Введите в данном поле Ключ API, полученный на сайте https://getsale.io" />', isset($this->options['getsale_api_key']) ? esc_attr($this->options['getsale_api_key']) : '');
+        printf('<input type="text" id="getsale_api_key" name="getsale_option_name[getsale_api_key]" value="%s" title="%s" />', isset($this->options['getsale_api_key']) ? esc_attr($this->options['getsale_api_key']) : '', __('Enter API Key', 'getsale-popup-tool'));
     }
 
     public function getsale_reg_error_callback() {
@@ -93,20 +90,19 @@ class getsaleSettingsPage {
 }
 
 function getsale_echo_before_text() {
-    echo '<div id="before_install" style="display:none;">
-Плагин Getsale успешно установлен!<br/>
-Для начала работы плагина необходимо ввести Ключ API, полученный в личном кабинете на сайте <a href="https://getsale.io">GetSale.io</a>
-</div>
+    echo '<div id=\'before_install\' style=\'display:none;\'>' . __('GetSale Popup Tool has been successfully installed', 'getsale-popup-tool') . '<br/>' .
+        __('To get started, you must enter Email and API Key, from from your <a href=\'https://getsale.io\'>GetSale account</a>', 'getsale-popup-tool') . '</div>
 <div class="wrap" id="after_install" style="display:none;">
-<p><b>GetSale</b> &mdash; профессиональный инструмент для создания popup-окон.</p>
-<p>GetSale поможет вашему сайту нарастить контактную базу лояльных клиентов, информировать посетителей о предстоящих акциях, распродажах, раздавать промокоды, скидки и многое другое, что напрямую повлияет на конверсии покупателей и рост продаж.</p>
+<p><b>' . __('GetSale Popup Tool', 'getsale-popup-tool') . '</b> &mdash; ' .
+        __('professional tool for creating popup windows', 'getsale-popup-tool') . '</p>
+<p>' . __('GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!', 'getsale-popup-tool') . '</p>
 </div>
 </div>
-<script type="text/javascript">
+<script type=\'text/javascript\'>
     window.onload = function () {
-        if (document.location.search == "?option=com_installer&view=install") {
-            document.getElementById("before_install").style.display = "block";
-        } else document.getElementById("after_install").style.display = "block";
+        if (document.location.search == \'?option=com_installer&view=install\') {
+            document.getElementById(\'before_install\').style.display = \'block\';
+        } else document.getElementById(\'after_install\').style.display = \'block\';
     }
 </script>';
 }
@@ -117,9 +113,20 @@ function getsale_reg($regDomain, $email, $key, $url) {
         return;
     }
     $ch = curl_init();
-    $jsondata = json_encode(array('email' => $email, 'key' => $key, 'url' => $url, 'cms' => 'wordpress'));
+    $jsondata = json_encode(array(
+        'email' => $email,
+        'key' => $key,
+        'url' => $url,
+        'cms' => 'wordpress'
+    ));
 
-    $options = array(CURLOPT_HTTPHEADER => array('Content-Type:application/json', 'Accept: application/json'), CURLOPT_URL => $domain . "/api/registration.json", CURLOPT_POST => 1, CURLOPT_POSTFIELDS => $jsondata, CURLOPT_RETURNTRANSFER => true,);
+    $options = array(
+        CURLOPT_HTTPHEADER => array('Content-Type:application/json', 'Accept: application/json'),
+        CURLOPT_URL => $domain . '/api/registration.json',
+        CURLOPT_POST => 1,
+        CURLOPT_POSTFIELDS => $jsondata,
+        CURLOPT_RETURNTRANSFER => true
+    );
 
     curl_setopt_array($ch, $options);
     $json_result = json_decode(curl_exec($ch));
