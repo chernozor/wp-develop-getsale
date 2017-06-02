@@ -56,6 +56,8 @@ jQuery(document).ready(function () {
 
             } else if (window.getsale_reg_error == 404) {
                 var error_text = '<div class="error"><p>' + gs.error404 + '</p></div>';
+            } else if (window.getsale_reg_error == 0) {
+                var error_text = '<div class="error"><p>' + gs.error0 + '</p></div>';
             }
             var gtsl_btn_html = '<div style="width:100%;margin-top: 5px;">' +
                 '<div style="padding-top: 7px;">' + error_text +

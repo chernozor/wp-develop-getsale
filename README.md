@@ -1,8 +1,8 @@
-#GetSale Developer version for WordPress
+# GetSale Developer version for WordPress
 Contributors: GetSale Team  
 Tags: getsale, popup, popups, developer  
 Requires at least: 3.0.1  
-Tested up to: 4.6.1  
+Tested up to: 4.7.5  
 Stable tag: 1.0.1  
 License: GNU General Public License, version 3  
 

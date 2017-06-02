@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: GetSale Team <support@getsale.io>\n"
 "Language-Team: GetSale Team <support@getsale.io>\n"
 "Language: ru_RU\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9(4374)\n"
 
 #: ../getsale.php:40
 msgid "Settings"
@@ -58,50 +58,54 @@ msgstr "профессиональный инструмент для созда�
 msgid "GetSale &mdash; powerful cutting edge tool to create widgets and popups for your website!"
 msgstr "GetSale &mdash; профессиональный инструмент для создания popup-окон!"
 
-#: ../getsale.php:125
+#: ../getsale.php:127
 msgid "Authorization"
 msgstr "Авторизация"
 
-#: ../getsale.php:126
+#: ../getsale.php:128
 msgid "Please, enter your Email and API Key from your GetSale account"
 msgstr "Введите Email и Ключ API из личного кабинета GetSale"
 
-#: ../getsale.php:127
+#: ../getsale.php:129
 msgid "If you don’t have GetSale account, you can register it <a href='https://getsale.io'>here</a>"
 msgstr "Если вы еще не регистрировались в сервисе GetSale это можно сделать по ссылке <a href='https://getsale.io'>GetSale</a>"
 
-#: ../getsale.php:128
+#: ../getsale.php:130
 msgid "Contact Us: <a href='mailto:support@getsale.io'>support@getsale.io</a>"
 msgstr "Служба поддержки: <a href='mailto:support@getsale.io'>support@getsale.io</a>"
 
-#: ../getsale.php:130
+#: ../getsale.php:132
 msgid "Congratulations! Your website is successfully linked to your <a href='https://getsale.io'>GetSale account</a>"
 msgstr "Поздравляем! Ваш сайт успешно привязан к аккаунту <a href='https://getsale.io'>GetSale</a>"
 
-#: ../getsale.php:131
+#: ../getsale.php:133
 msgid "You can start creating widgets for your website using your <a href='https://getsale.io'>GetSale account</a>!"
 msgstr "Теперь вы можете создать виджеты в личном кабинете на <a href='https://getsale.io'>GetSale</a>!"
 
-#: ../getsale.php:132
+#: ../getsale.php:134
 msgid "API Key is correct"
 msgstr "Введен правильный API ключ!"
 
-#: ../getsale.php:133
+#: ../getsale.php:135
 msgid "Email is correct"
 msgstr "Введен правильный Email!"
 
-#: ../getsale.php:134
+#: ../getsale.php:136
 msgid "Attention! API Key is invalid. Please, check and enter API Key once again"
 msgstr "Ошибка! Неверно введен Ключ API"
 
-#: ../getsale.php:135
+#: ../getsale.php:137
 msgid "Attention! This Email isn’t registered on <a href='https://getsale.io'>GetSale</a>"
 msgstr "Ошибка! Данный Email не зарегистрирован на сайте <a href='https://getsale.io'>GetSale</a>"
 
-#: ../getsale.php:136
+#: ../getsale.php:138
 msgid "Attention! This website is already in use on <a href='https://getsale.io'>GetSale</a>"
 msgstr "Ошибка! Данный сайт уже используется на <a href='https://getsale.io'>GetSale</a>"
 
-#: ../getsale.php:138
+#: ../getsale.php:139
+msgid "You don't have Curl support in your PHP!"
+msgstr "На хостинге не установлено расширение Curl!"
+
+#: ../getsale.php:141
 msgid "GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!"
 msgstr "GetSale поможет вашему сайту нарастить контактную базу лояльных клиентов, информировать посетителей о предстоящих акциях, распродажах, раздавать промокоды, скидки и многое другое, что напрямую повлияет на конверсии покупателей и рост продаж."
