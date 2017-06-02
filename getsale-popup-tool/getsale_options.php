@@ -75,6 +75,7 @@ class getsaleSettingsPage {
             if (is_object($reg_ans)) {
                 if (($reg_ans->status == 'OK') && (isset($reg_ans->payload))) {
                     $new_input = get_option('getsale_option_name');
+                    $new_input['getsale_host'] = trim($input['getsale_host']);
                     $new_input['getsale_project_id'] = $reg_ans->payload->projectId;
                     $new_input['getsale_email'] = trim($input['getsale_email']);
                     $new_input['getsale_api_key'] = trim($input['getsale_api_key']);
@@ -84,6 +85,7 @@ class getsaleSettingsPage {
                 elseif ($reg_ans->status = 'error') {
                     $new_input = get_option('getsale_option_name');
                     $new_input['getsale_project_id'] = '';
+                    $new_input['getsale_host'] = trim($input['getsale_host']);
                     $new_input['getsale_email'] = trim($input['getsale_email']);
                     $new_input['getsale_api_key'] = trim($input['getsale_api_key']);
                     $new_input['getsale_reg_error'] = $reg_ans->code;
@@ -178,10 +180,8 @@ function getsale_scripts_method() {
     $options = get_option('getsale_option_name');
     if ($options['getsale_project_id'] !== '') {
         wp_register_script('getsale_handle', plugins_url('js/main.js', __FILE__), array('jquery'));
-
         $datatoBePassed = array('project_id' => $options['getsale_project_id']);
         wp_localize_script('getsale_handle', 'getsale_vars', $datatoBePassed);
-
         wp_enqueue_script('getsale_handle');
     }
 }

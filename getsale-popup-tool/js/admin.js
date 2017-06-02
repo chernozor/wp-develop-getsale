@@ -7,15 +7,15 @@ jQuery(document).ready(function () {
     jQuery('#getsale_reg_error').parent().parent().hide();
     jQuery('input[name=submit_btn]').attr('value', gs.authorization);
 
-    jQuery('#getsale_api_key, #getsale_email').each(function () {
+    jQuery('#getsale_api_key, #getsale_email, #getsale_host').each(function () {
         if (jQuery(this).val() == '') {
             jQuery('input[name=submit_btn]').attr('disabled', 'disabled');
         }
     });
 
-    jQuery('#getsale_api_key, #getsale_email').keyup(function () {
+    jQuery('#getsale_api_key, #getsale_email, #getsale_host').keyup(function () {
         var empty = false;
-        jQuery('#getsale_api_key, #getsale_email').each(function () {
+        jQuery('#getsale_api_key, #getsale_email, #getsale_host').each(function () {
             if (jQuery(this).val() == '') {
                 empty = true;
             }
@@ -27,8 +27,11 @@ jQuery(document).ready(function () {
         }
     });
     var app_key_selector = '#getsale_api_key';
-    var getsale_images_ok = gs.path;
+    var host_selector = '#getsale_host';
     var email_selector = '#getsale_email';
+
+    var getsale_images_ok = gs.path;
+
     var text_after = '<p>' + gs.enter_value + '</p><p>' + gs.registration + '</p>';
     var sup_text = '<p>' + gs.support + '</p>' +
         '<p>WordPress ' + gs.getsale_name + ' ' + gs.getsale_ver + '</p>';
@@ -41,12 +44,17 @@ jQuery(document).ready(function () {
     }
     if ((jQuery(app_key_selector).val() !== '') && (jQuery(email_selector).val() !== '')) {
         if (window.getsale_succes_reg == true) {
+            jQuery(host_selector).after('<img title="' + gs.api_key_success + '" class="gtsl_ok" src="' + getsale_images_ok + '">');
             jQuery(app_key_selector).after('<img title="' + gs.api_key_success + '" class="gtsl_ok" src="' + getsale_images_ok + '">');
             jQuery(email_selector).after('<img title="' + gs.email_success + '" class="gtsl_ok" src="' + getsale_images_ok + '">');
+
             jQuery(app_key_selector).attr('disabled', 'disabled');
             jQuery(email_selector).attr('disabled', 'disabled');
+            jQuery(host_selector).attr('disabled', 'disabled');
+
             jQuery('[name=submit_btn]').before('<br>' + success_text + sup_text);
             jQuery('[name=submit_btn]').hide();
+
         } else if (window.getsale_succes_reg == false) {
             jQuery('input[name=submit_btn]').after(text_after + sup_text);
             if (window.getsale_reg_error == 403) {
