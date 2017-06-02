@@ -61,10 +61,10 @@ function getsale_add_filter($product_id) {
     return $product_id;
 }
 
-$options = get_option('getsale_option_name');
+$options = get_option('dev_getsale_option_name');
 
 if (is_admin()) {
-    $options = get_option('getsale_option_name');
+    $options = get_option('dev_getsale_option_name');
 
     if (is_bool($options)) {
         getsale_set_default_code();
@@ -116,5 +116,5 @@ function getsale_script_translate() {
 register_uninstall_hook(__FILE__, 'getsale_plugin_uninstall');
 
 function getsale_plugin_uninstall() {
-    delete_option('getsale_option_name');
+    delete_option('dev_getsale_option_name');
 }
